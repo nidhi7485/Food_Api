@@ -13,7 +13,15 @@ const foodApiRouter = require('./routes/foodApiRoute')
 
 // middleware
 app.use(express.json())
+app.use(express.urlencoded())
+app.use(express.static('./public'))
 
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/public/landingPage.html')
+})
+app.get('/registration', (req, res) => {
+  res.sendFile(__dirname + '/public/register.html')
+})
 app.use('/', foodApiRouter)
 
 const start = async () => {

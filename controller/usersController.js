@@ -2,7 +2,7 @@ const User = require('../models/User')
 
 const registerUser = async (req, res) => {
   try {
-    // console.log(req.body)
+    console.log(req.body)
     const user = await User.create(req.body)
     const token = user.creatjwt()
     res.status(200).json({ msg: 'user added successfully', user, token })
